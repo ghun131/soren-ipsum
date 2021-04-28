@@ -15,10 +15,10 @@ export function useKeydown(callback) {
 
 export function useKeyup(callback) {
   useEffect(() => {
-    document.addEventListener('keyup', (event) => callback(event));
+    window.addEventListener('keyup', (event) => callback(event));
 
     return () => {
-      document.removeEventListener('keyup', (event) => callback(event));
+      window.removeEventListener('keyup', (event) => callback(event));
     };
   });
 }
