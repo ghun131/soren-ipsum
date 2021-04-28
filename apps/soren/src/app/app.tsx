@@ -88,31 +88,30 @@ export function App() {
     handleApplyNext();
   }, []);
 
-  useKeydown((event) => {
+ useKeydown((event) => {
+    event.preventDefault();
     if (
       (event.metaKey && isMac()) ||
-      (event.keyCode === 91 && (isWin() || isLinux()))
+      (event.keyCode === 17 && (isWin() || isLinux()))
     ) {
       setIsHoldingCtr(true);
     }
 
     if (event.keyCode === 67 && isHoldingCtr) {
-      event.preventDefault();
       handleCopyText();
     }
 
     if (event.keyCode === 71 && isHoldingCtr) {
-      event.preventDefault();
       handleApplyNext();
     }
   });
 
   useKeyup((event) => {
-    if (isHoldingCtr) {
+    if (event.metaKey || event.keyCode === 17) {
       setIsHoldingCtr(false);
     }
   });
-
+  
   function handleChangeNumberValue(event) {
     setNumberValue(Number(event.target.value));
   }
