@@ -88,8 +88,7 @@ export function App() {
     handleApplyNext();
   }, []);
 
- useKeydown((event) => {
-    event.preventDefault();
+  useKeydown((event) => {
     if (
       (event.metaKey && isMac()) ||
       (event.keyCode === 17 && (isWin() || isLinux()))
@@ -98,10 +97,12 @@ export function App() {
     }
 
     if (event.keyCode === 67 && isHoldingCtr) {
+      event.preventDefault();
       handleCopyText();
     }
 
     if (event.keyCode === 71 && isHoldingCtr) {
+      event.preventDefault();
       handleApplyNext();
     }
   });
@@ -111,7 +112,7 @@ export function App() {
       setIsHoldingCtr(false);
     }
   });
-  
+
   function handleChangeNumberValue(event) {
     setNumberValue(Number(event.target.value));
   }
