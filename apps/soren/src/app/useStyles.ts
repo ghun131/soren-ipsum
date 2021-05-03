@@ -55,7 +55,4 @@ export const useStyles = () => makeStyles({
   selectStyle: {
     fontSize: 20,
   },
-  button: {
-    backgroundColor: 'white',
-  },
 });

@@ -3,6 +3,8 @@ import SorenImg from '../assets/soren_kierkegaard.jpeg';
 import border19th from '../assets/19th_border.jpeg';
 import text from '../assets/fat.txt';
 import { useKeydown, useKeyup } from './useHotkeys';
+import CopyButton from './CopyButton';
+import NextButton from './NextButton';
 import {
   generateSentencesGroup,
   generateWordsGroup,
@@ -10,73 +12,13 @@ import {
   isLinux,
   isWin,
 } from './utils';
-import { makeStyles } from '@material-ui/core/styles';
+import { useStyles } from './useStyles';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const useStyles = makeStyles({
-  title: {
-    textAlign: 'center',
-    fontSize: 45,
-    marginTop: 25,
-  },
-  buttonGroupsContainer: {
-    marginBottom: 50,
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  imgStyle: {
-    borderRadius: '50%',
-    display: 'block',
-    margin: '0 auto',
-  },
-  textContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 10,
-    fontSize: 20,
-  },
-  excerptWords: {
-    fontSize: 20,
-    width: '80%',
-    margin: '30px auto',
-  },
-  excerptSentences: {
-    fontSize: 20,
-    width: '80%',
-    margin: '30px auto',
-
-    '&:first-letter': {
-      fontSize: '250%',
-    },
-  },
-  buttonContainer: {
-    backgroundImage: `url(${border19th})`,
-    width: 114,
-    backgroundSize: 'cover',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 68,
-  },
-  inputStyle: {
-    fontSize: 20,
-    width: 30,
-    margin: '0 7px',
-  },
-  selectStyle: {
-    fontSize: 20,
-  },
-  button: {
-    backgroundColor: 'white',
-  },
-});
-
 export function App() {
-  const classes = useStyles();
+  const classes = useStyles()();
   const [numberValue, setNumberValue] = React.useState(5);
   const [type, setType] = React.useState('sentences');
   const [excerpt, setExcerpt] = React.useState('');
@@ -114,7 +56,9 @@ export function App() {
   });
 
   function handleChangeNumberValue(event) {
-    setNumberValue(Number(event.target.value));
+    if (!isNaN(Number(event.target.value))) {
+      setNumberValue(Number(event.target.value));
+    }
   }
 
   function handleChangeType(event) {
@@ -155,6 +99,7 @@ export function App() {
         Knight of faith please gives me{'   '}
         <Input
           className={classes.inputStyle}
+          data-testid="letter-amount"
           value={numberValue}
           onChange={handleChangeNumberValue}
         />{' '}
@@ -162,6 +107,7 @@ export function App() {
           className={classes.selectStyle}
           value={type}
           onChange={handleChangeType}
+          data-testid="letter-type"
         >
           <MenuItem value="words">words</MenuItem>
           <MenuItem value="sentences">sentences</MenuItem>
@@ -181,25 +127,11 @@ export function App() {
       {excerpt && (
         <section className={classes.buttonGroupsContainer}>
           <div className={classes.buttonContainer}>
-            <Button
-              className={classes.button}
-              onClick={handleCopyText}
-              data-testid="copy-button"
-              color="default"
-            >
-              {isCopied ? 'Copied' : 'Copy'}
-            </Button>
+            <CopyButton handleCopyText={handleCopyText} isCopied={isCopied} />
           </div>
           &nbsp; &nbsp;
           <div className={classes.buttonContainer}>
-            <Button
-              className={classes.button}
-              onClick={handleApplyNext}
-              data-testid="next-button"
-              color="default"
-            >
-              Next
-            </Button>
+            <NextButton handleApplyNext={handleApplyNext} />
           </div>
         </section>
       )}
