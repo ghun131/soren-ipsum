@@ -96,7 +96,7 @@ export function App() {
       </div>
 
       <div className={classes.textContainer}>
-        Knight of faith please gives me{'   '}
+        Knight of faith gives me{'   '}
         <Input
           className={classes.inputStyle}
           data-testid="letter-amount"
