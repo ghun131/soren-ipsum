@@ -135,6 +135,19 @@ export function App() {
           </div>
         </section>
       )}
+
+      <section style={{ position: 'fixed', top: '50%', right: 3, width: 122, fontSize: 16 }}>
+        <div style={{ display: 'flex', marginLeft: 10 }}>
+          <div>ctr + c</div>
+          &nbsp;
+          <div>copy</div>
+        </div>
+        <div style={{ display: 'flex', marginLeft: 10 }}>
+          <div>ctr + g</div>
+          &nbsp;
+          <div>new text</div>
+        </div>
+      </section>
     </div>
   );
 }
