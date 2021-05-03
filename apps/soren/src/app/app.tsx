@@ -173,6 +173,7 @@ export function App() {
         className={
           isFirstLetterBig ? classes.excerptSentences : classes.excerptWords
         }
+        data-testid="excerpt"
       >
         {excerpt}
       </p>
@@ -183,6 +184,7 @@ export function App() {
             <Button
               className={classes.button}
               onClick={handleCopyText}
+              data-testid="copy-button"
               color="default"
             >
               {isCopied ? 'Copied' : 'Copy'}
@@ -193,6 +195,7 @@ export function App() {
             <Button
               className={classes.button}
               onClick={handleApplyNext}
+              data-testid="next-button"
               color="default"
             >
               Next
