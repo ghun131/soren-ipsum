@@ -1,13 +1,19 @@
-import { getGreeting } from '../support/app.po';
+import { getTitle } from '../support/app.po';
 
 describe('soren', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to soren!');
+  it('should display title Soren Ipsum', () => {
+    getTitle().contains('Soren Ipsum');
   });
+
+  it('should get 5 sentences initial load')
+
+  it('should give different paragraph when click next ')
+
+  it('should give 5 words when word is selected before clicking next')
+
+  it('should generate new paragraph when ctr + g is pressed')
+
+  it('should copy text when ctr + c is pressed')
 });

@@ -84,7 +84,7 @@ export function App() {
 
   return (
     <div>
-      <div className={classes.title}>Soren Ipsum</div>
+      <div data-test-id="title" className={classes.title}>Soren Ipsum</div>
       <div>
         <img
           className={classes.imgStyle}
