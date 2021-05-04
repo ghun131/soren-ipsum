@@ -136,13 +136,13 @@ export function App() {
         </section>
       )}
 
-      <section style={{ position: 'fixed', top: '50%', right: 3, width: 122, fontSize: 16 }}>
-        <div style={{ display: 'flex', marginLeft: 10 }}>
+      <section className={classes.instruction}>
+        <div className={classes.hotkey}>
           <div>ctr + c</div>
           &nbsp;
           <div>copy</div>
         </div>
-        <div style={{ display: 'flex', marginLeft: 10 }}>
+        <div className={classes.hotkey}>
           <div>ctr + g</div>
           &nbsp;
           <div>new text</div>
